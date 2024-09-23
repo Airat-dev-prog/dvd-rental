@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="Таблицы.erd">
+	<entities>
+		<data-source id="postgres-jdbc-19201631d6a-147ff78021e5aa45">
+			<entity id="1" name="actor" fq-name="public.actor" order="0" font="Segoe UI:10:0" x="239" y="613">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="2" name="address" fq-name="public.address" order="1" font="Segoe UI:10:0" x="1013" y="223">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="3" name="category" fq-name="public.category" order="2" font="Segoe UI:10:0" x="231" y="748">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="4" name="city" fq-name="public.city" order="3" font="Segoe UI:10:0" x="1176" y="277">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="5" name="country" fq-name="public.country" order="4" font="Segoe UI:10:0" x="1351" y="287">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="6" name="customer" fq-name="public.customer" order="5" font="Segoe UI:10:0" x="445" y="120">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="7" name="film" fq-name="public.film" order="6" font="Segoe UI:10:0" x="765" y="491">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="8" name="film_actor" fq-name="public.film_actor" order="7" font="Segoe UI:10:0" x="410" y="623">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="9" name="film_category" fq-name="public.film_category" order="8" font="Segoe UI:10:0" x="411" y="751">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="10" name="inventory" fq-name="public.inventory" order="9" font="Segoe UI:10:0" x="402" y="437">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="11" name="language" fq-name="public.&quot;language&quot;" order="10" font="Segoe UI:10:0" x="1035" y="608">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="12" name="payment" fq-name="public.payment" order="11" font="Segoe UI:10:0" x="181" y="362">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="13" name="rental" fq-name="public.rental" order="12" font="Segoe UI:10:0" x="225" y="33">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="14" name="staff" fq-name="public.staff" order="13" font="Segoe UI:10:0" x="847" y="24">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+			<entity id="15" name="store" fq-name="public.store" order="14" font="Segoe UI:10:0" x="619" y="197">
+				<path name="public"/>
+				<path name="postgres"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations>
+		<relation name="film_actor_actor_id_fkey" fq-name="public.film_actor.film_actor_actor_id_fkey" type="fk" pk-ref="1" fk-ref="8"/>
+		<relation name="customer_address_id_fkey" fq-name="public.customer.customer_address_id_fkey" type="fk" pk-ref="2" fk-ref="6">
+			<bend type="abs" x="594" y="355"/>
+			<bend type="abs" x="818" y="355"/>
+		</relation>
+		<relation name="staff_address_id_fkey" fq-name="public.staff.staff_address_id_fkey" type="fk" pk-ref="2" fk-ref="14"/>
+		<relation name="store_address_id_fkey" fq-name="public.store.store_address_id_fkey" type="fk" pk-ref="2" fk-ref="15"/>
+		<relation name="film_category_category_id_fkey" fq-name="public.film_category.film_category_category_id_fkey" type="fk" pk-ref="3" fk-ref="9"/>
+		<relation name="address_city_id_fkey" fq-name="public.address.address_city_id_fkey" type="fk" pk-ref="4" fk-ref="2"/>
+		<relation name="city_country_id_fkey" fq-name="public.city.city_country_id_fkey" type="fk" pk-ref="5" fk-ref="4"/>
+		<relation name="payment_customer_id_fkey" fq-name="public.payment.payment_customer_id_fkey" type="fk" pk-ref="6" fk-ref="12"/>
+		<relation name="rental_customer_id_fkey" fq-name="public.rental.rental_customer_id_fkey" type="fk" pk-ref="6" fk-ref="13"/>
+		<relation name="film_actor_film_id_fkey" fq-name="public.film_actor.film_actor_film_id_fkey" type="fk" pk-ref="7" fk-ref="8"/>
+		<relation name="film_category_film_id_fkey" fq-name="public.film_category.film_category_film_id_fkey" type="fk" pk-ref="7" fk-ref="9"/>
+		<relation name="inventory_film_id_fkey" fq-name="public.inventory.inventory_film_id_fkey" type="fk" pk-ref="7" fk-ref="10"/>
+		<relation name="rental_inventory_id_fkey" fq-name="public.rental.rental_inventory_id_fkey" type="fk" pk-ref="10" fk-ref="13"/>
+		<relation name="film_language_id_fkey" fq-name="public.film.film_language_id_fkey" type="fk" pk-ref="11" fk-ref="7"/>
+		<relation name="film_original_language_id_fkey" fq-name="public.film.film_original_language_id_fkey" type="fk" pk-ref="11" fk-ref="7"/>
+		<relation name="payment_rental_id_fkey" fq-name="public.payment.payment_rental_id_fkey" type="fk" pk-ref="13" fk-ref="12"/>
+		<relation name="payment_staff_id_fkey" fq-name="public.payment.payment_staff_id_fkey" type="fk" pk-ref="14" fk-ref="12">
+			<bend type="abs" x="230" y="599"/>
+			<bend type="abs" x="410" y="599"/>
+			<bend type="abs" x="594" y="599"/>
+		</relation>
+		<relation name="rental_staff_id_fkey" fq-name="public.rental.rental_staff_id_fkey" type="fk" pk-ref="14" fk-ref="13">
+			<bend type="abs" x="410" y="90"/>
+			<bend type="abs" x="594" y="90"/>
+		</relation>
+		<relation name="store_manager_staff_id_fkey" fq-name="public.store.store_manager_staff_id_fkey" type="fk" pk-ref="14" fk-ref="15"/>
+		<relation name="customer_store_id_fkey" fq-name="public.customer.customer_store_id_fkey" type="fk" pk-ref="15" fk-ref="6"/>
+		<relation name="inventory_store_id_fkey" fq-name="public.inventory.inventory_store_id_fkey" type="fk" pk-ref="15" fk-ref="10"/>
+		<relation name="staff_store_id_fkey" fq-name="public.staff.staff_store_id_fkey" type="fk" pk-ref="15" fk-ref="14"/>
+	</relations>
+</diagram>
